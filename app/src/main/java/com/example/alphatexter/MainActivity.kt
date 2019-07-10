@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         {
             //import contacts from excel sheet
             importButton.setOnClickListener {
-                readExcel(this, "test.xlsx")
+                readExcel(this, "testing.xlsx")
                 Toast.makeText(this@MainActivity, "Done Importing!", Toast.LENGTH_SHORT).show()
                 refreshTextAndProgress()
             }
