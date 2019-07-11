@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.os.Handler
+import android.telephony.SmsManager
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -16,6 +17,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import java.io.File
 import java.lang.Exception
+import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity() {
 
@@ -49,11 +51,7 @@ class MainActivity : AppCompatActivity() {
 
             startCallButton.setOnClickListener {
                 refreshTextAndProgress()
-                Handler().postDelayed({
-                    val startCall = Intent(this@MainActivity, TextScreen::class.java)
-                    startActivity(startCall)
-                    this.finish()
-                }, 750)
+                sendText()
             }
         }
         if (importButton.isClickable && importButton.isEnabled)
@@ -67,11 +65,7 @@ class MainActivity : AppCompatActivity() {
 
             startCallButton.setOnClickListener {
                 refreshTextAndProgress()
-                Handler().postDelayed({
-                    val startCall = Intent(this@MainActivity, TextScreen::class.java)
-                    startActivity(startCall)
-                    this.finish()
-                }, 750)
+                sendText()
             }
 
             clearDataButton.setOnClickListener {
@@ -163,6 +157,7 @@ class MainActivity : AppCompatActivity() {
         }
         return
     }
+
     private fun isExternalStorageReadOnly(): Boolean //function to check if External Storage is Read Only
     {
         val extStorageState = Environment.getExternalStorageState()
@@ -172,6 +167,7 @@ class MainActivity : AppCompatActivity() {
         }
         return false
     }
+
     private fun isExternalStorageAvailable(): Boolean //function to check if External Storage is Available
     {
         val extStorageState = Environment.getExternalStorageState()
@@ -180,5 +176,21 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         return false
+    }
+
+    fun sendText()
+    {
+        val df = DecimalFormat("#")
+        var numberList: ArrayList<Double>
+        var index: Int = 0
+
+        numberList = (this.application as NumberLister).getList() //retrieve contact list from shared preferences
+
+        val smsManager = SmsManager.getDefault()
+        while (index < numberList.size)
+        {
+            smsManager.sendTextMessage(df.format(numberList[index++]), null, "This is a demo.", null, null)
+        }
+        Toast.makeText(this@MainActivity, "Texts have been sent!",Toast.LENGTH_SHORT).show()
     }
 }
