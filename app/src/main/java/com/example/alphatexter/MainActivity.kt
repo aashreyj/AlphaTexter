@@ -1,11 +1,9 @@
 package com.example.alphatexter
 
 import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
-import android.os.Handler
 import android.telephony.SmsManager
 import android.widget.Button
 import android.widget.TextView
@@ -44,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             importButton.setOnClickListener {
-                readExcel(this, "test.xlsx")
+                readExcel(this, "testing.xlsx")
                 Toast.makeText(this@MainActivity, "Done Importing!", Toast.LENGTH_SHORT).show()
                 refreshTextAndProgress()
             }
