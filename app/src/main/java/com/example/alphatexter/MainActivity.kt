@@ -1,6 +1,7 @@
 package com.example.alphatexter
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
@@ -48,8 +49,9 @@ class MainActivity : AppCompatActivity() {
             }
 
             startCallButton.setOnClickListener {
-                refreshTextAndProgress()
-                sendText()
+                val startText = Intent(this@MainActivity, Texting::class.java)
+                startActivity(startText)
+                this.finish()
             }
         }
         if (importButton.isClickable && importButton.isEnabled)
@@ -62,8 +64,9 @@ class MainActivity : AppCompatActivity() {
             }
 
             startCallButton.setOnClickListener {
-                refreshTextAndProgress()
-                sendText()
+                val startText = Intent(this@MainActivity, Texting::class.java)
+                startActivity(startText)
+                this.finish()
             }
 
             clearDataButton.setOnClickListener {
@@ -174,21 +177,5 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         return false
-    }
-
-    fun sendText()
-    {
-        val df = DecimalFormat("#")
-        var numberList: ArrayList<Double>
-        var index: Int = 0
-
-        numberList = (this.application as NumberLister).getList() //retrieve contact list from shared preferences
-
-        val smsManager = SmsManager.getDefault()
-        while (index < numberList.size)
-        {
-            smsManager.sendTextMessage(df.format(numberList[index++]), null, "This is a demo.", null, null)
-        }
-        Toast.makeText(this@MainActivity, "Texts have been sent!",Toast.LENGTH_SHORT).show()
     }
 }

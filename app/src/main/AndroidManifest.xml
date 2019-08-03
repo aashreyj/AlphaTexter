@@ -13,9 +13,11 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity"
-                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-        >
+        <activity android:name=".Texting">
+        </activity>
+        <activity
+                android:name=".SplashActivity"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
