@@ -12,10 +12,16 @@
             android:minHeight="200dp"
             android:inputType="textLongMessage|textMultiLine"
             android:scrollHorizontally="false"
-            android:hint="@string/hint"
+            android:text="@string/defaulter"
+            android:fontFamily="@font/mytextfont"
+            android:textColor="#000000"
+            android:textSize="22sp"
+            android:textStyle="bold"
             android:id="@+id/textMessage"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
+            android:background="@drawable/shape"
+            android:padding="18dp"
     />
 
     <Button
@@ -25,8 +31,8 @@
             android:textSize="24sp"
             android:fontFamily="@font/myfont"
             android:layout_below="@+id/textMessage"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="36dp"
+            android:layout_centerHorizontal="true"
             android:padding="20dp"
             android:id="@+id/sendText"
     />

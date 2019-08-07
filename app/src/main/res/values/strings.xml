@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">AlphaTexter</string>
-    <string name="hint">Enter the text message here...</string>
+    <string name="defaulter">
+        Hey there, from Robocell, CCA. We have received your payment for the Autonomous Robotics Workshop and your team has
+        been registered. See you at the Workshop!
+    </string>
 </resources>
